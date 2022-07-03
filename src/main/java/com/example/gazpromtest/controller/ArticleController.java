@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
  * <p>Один эндпойнт для получения ответа в редактированном виде и в виде строки</p>
  * <p>Для того что бы получить форматированный ответ - необходимо отправить get запрос по эндпойнту - <br>/wiki/<название статьи>/?pretty=true</p>
  * <p>Для того что бы получить ответ в виде строки, флаг pretty должен быть равен false - <br>/wiki/<название статьи>/?pretty=false</p>
+ * <p>Для получения статистики - кол-во статей по категориям - необходимо отправить get запрос на эндпойнт /statistic</p>
  * @see com.example.gazpromtest.model.Article
  * @see ArticleService*/
 @RestController
@@ -27,6 +28,11 @@ public class ArticleController {
             response = articleService.getArticleByTitle(title);
         }
         return response;
+    }
+
+    @GetMapping(value = "statistic")
+    public String getStatistic(){
+        return  articleService.getStatisticByCategory();
     }
 
 }
