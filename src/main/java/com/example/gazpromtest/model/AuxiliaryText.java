@@ -4,6 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+/**@author Alexandr Porotov
+ * <p>Сущность базы данных, поле объекта статьи</p>
+ * @see Article*/
 @Data
 @Entity
 @Table(name = "auxiliary_text")

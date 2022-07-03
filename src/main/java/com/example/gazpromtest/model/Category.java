@@ -4,6 +4,9 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+/**@author Alexandr Porotov
+ * <p>Сущность базы данных, поле объекта статья</p>
+ * @see Article*/
 @Data
 @Entity
 @Table(name = "categories")

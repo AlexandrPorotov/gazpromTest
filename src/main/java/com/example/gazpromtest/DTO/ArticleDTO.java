@@ -5,8 +5,11 @@ import com.example.gazpromtest.model.Category;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 import java.sql.Date;
-import java.util.List;
 
+/**@author Alexandr Porotv
+ * <p>Класс для парсинга статьи из JSON файла</p>
+ * @see com.example.gazpromtest.service.ImportService
+ * @see com.example.gazpromtest.model.Article*/
 @Data
 public class ArticleDTO {
 

@@ -1,12 +1,13 @@
 package com.example.gazpromtest.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
+/**@author Alexandr Porotov
+ * <p>Сущность базы данных - статья</p>*/
 @Data
 @Entity
 @Table(name = "articles")

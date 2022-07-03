@@ -18,6 +18,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Alexandr Porotov
+ * <p>Сервис реализующий иморт данных из JSON файла в базу данных</p>
+ * <p>Для запуска необходимо отправить post запрос на эндпойнт /api/admin/import</p>
+ * @see com.example.gazpromtest.controller.ImportController
+ * */
 @Service
 @AllArgsConstructor
 public class ImportService {
@@ -26,7 +32,8 @@ public class ImportService {
     private final AuxiliaryTextRepository auxiliaryTextRepository;
     private final CategoryRepository categoryRepository;
 
-    private static final String PATH = "E:\\PROJECTS\\gazpromTest\\src\\main\\resources\\static\\aawiki-20220627-cirrussearch-general.json";
+    // Путь к JSON файлу, в данном примере располагается в пакете resources\static . Имя файла - input.json
+    private static final String PATH = System.getProperty("user.dir")+ "\\src\\main\\resources\\static\\input.json";
 
     public void saveDataFromJson() throws IOException {
         List<String> gson = Files.readAllLines(Paths.get(PATH));

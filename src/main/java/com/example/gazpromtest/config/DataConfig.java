@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.annotation.Resource;
 import javax.sql.DataSource;
 
+/**@author Alexandr Porotov
+ * <p>Конфигурация базы данных</p>*/
 @Configuration
 @EnableTransactionManagement
 public class DataConfig {
