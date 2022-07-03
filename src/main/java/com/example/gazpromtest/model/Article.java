@@ -37,4 +37,13 @@ public class Article {
 
     @OneToMany(mappedBy = "article")
     private List<AuxiliaryText> auxiliaryText;
+
+
+    public long getCreateTimestampByUnixTime(){
+        return this.createTimestamp.getTime();
+    }
+
+    public long getTimestampByUnixTime(){
+        return this.timestamp.getTime();
+    }
 }

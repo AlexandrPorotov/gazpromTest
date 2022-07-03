@@ -42,6 +42,29 @@ public class ImportService {
 
                 Article article = new Article();
 
+                List<AuxiliaryText> auxiliaryTextList = new ArrayList<>();
+                if(articleFromJson.getAuxiliaryText() != null) {
+                    for (String str : articleFromJson.getAuxiliaryText()) {
+                        AuxiliaryText auxiliaryText = new AuxiliaryText();
+                        auxiliaryText.setAuxiliaryText(str);
+                        auxiliaryText.setArticle(article);
+                        auxiliaryTextList.add(auxiliaryText);
+                    }
+                }
+
+                List<Category> categoryList = new ArrayList<>();
+                if(articleFromJson.getCategory() != null) {
+                    for (String str : articleFromJson.getCategory()) {
+                        Category category = new Category();
+                        category.setCategory(str);
+                        category.setArticle(article);
+                        categoryList.add(category);
+                    }
+                }
+
+                article.setCategory(categoryList);
+                article.setAuxiliaryText(auxiliaryTextList);
+
                 article.setLanguage(articleFromJson.getLanguage());
                 article.setTimestamp(articleFromJson.getTimestamp());
                 article.setTitle(articleFromJson.getTitle());
@@ -49,34 +72,9 @@ public class ImportService {
                 article.setCreateTimestamp(articleFromJson.getCreateTimestamp());
 
                 articleRepository.save(article);
-                List<AuxiliaryText> auxiliaryTextList = new ArrayList<>();
-                if(articleFromJson.getAuxiliaryText() == null) {
-                    article.setAuxiliaryText(null);
-                } else {
-                    for (String str : articleFromJson.getAuxiliaryText()) {
-                        AuxiliaryText auxiliaryText = new AuxiliaryText();
-                        auxiliaryText.setAuxiliaryText(str);
-                        auxiliaryText.setArticle(article);
-                        auxiliaryTextRepository.save(auxiliaryText);
-                        auxiliaryTextList.add(auxiliaryText);
-                    }
-                    article.setAuxiliaryText(auxiliaryTextList);
-                }
+                auxiliaryTextRepository.saveAll(auxiliaryTextList);
+                categoryRepository.saveAll(categoryList);
 
-                List<Category> categoryList = new ArrayList<>();
-                if(articleFromJson.getCategory() == null) {
-                    article.setCategory(null);
-                } else {
-                    for (String str : articleFromJson.getCategory()) {
-                        Category category = new Category();
-                        category.setCategory(str);
-                        category.setArticle(article);
-                        categoryRepository.save(category);
-                        categoryList.add(category);
-                    }
-                    article.setCategory(categoryList);
-                }
-                articleRepository.save(article);
             }
         }
     }
